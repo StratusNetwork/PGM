@@ -31,15 +31,21 @@ import tc.oc.pgm.kits.tag.ItemTags;
 public class KitMatchModule implements MatchModule, Listener {
 
   private final Match match;
+  private KitModule module;
   private final SetMultimap<MatchPlayer, ArmorType> lockedArmorSlots = HashMultimap.create();
 
-  public KitMatchModule(Match match) {
+  public KitMatchModule(Match match, KitModule module) {
     this.match = match;
+    this.module = module;
   }
 
   @Override
   public void disable() {
     this.lockedArmorSlots.clear();
+  }
+
+  public KitModule getModule() {
+    return module;
   }
 
   public boolean lockArmorSlot(MatchPlayer player, ArmorType armorType, boolean locked) {
