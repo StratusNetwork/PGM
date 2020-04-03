@@ -81,7 +81,7 @@ public class CommandGraph extends BasicBukkitCommandGraph {
     register(new RestartCommand());
     register(new SettingCommand());
     register(new StartCommand());
-    register(new StatsCommand());
+    // register(new StatsCommand());
     register(new TeamCommand(), "team");
     register(new TimeLimitCommand());
     register(new VotingCommand(), "vote", "votes");

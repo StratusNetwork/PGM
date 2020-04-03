@@ -157,7 +157,7 @@ public interface Modules {
     register(SoundsMatchModule.class, new SoundsMatchModule.Factory());
     register(ObserverToolsMatchModule.class, new ObserverToolsMatchModule.Factory());
     register(FireworkMatchModule.class, FireworkMatchModule::new);
-    register(StatsMatchModule.class, StatsMatchModule::new);
+//    register(StatsMatchModule.class, StatsMatchModule::new);
     register(MapmakerMatchModule.class, MapmakerMatchModule::new);
 
     // FIXME: Disabled due to lag - look into future optimization
