@@ -2,7 +2,7 @@ name: deploy
 on:
   push:
     branches:
-      - dev
+      - master
   repository_dispatch:
 jobs:
   deploy:
@@ -24,17 +24,11 @@ jobs:
     - name: nexus
       run: mvn deploy -s settings.xml
       env:
-        NEXUS_USERNAME: ${{ secrets.NEXUS_USERNAME }}
-        NEXUS_PASSWORD: ${{ secrets.NEXUS_PASSWORD }}
+        MAVEN_REPO_USER: ${{ secrets.MAVEN_REPO_USER }}
+        MAVEN_REPO_PASS: ${{ secrets.MAVEN_REPO_USER }}
+        MAVEN_REPO_URL: ${{ secrets.MAVEN_REPO_URL }}
     - name: artifact
       uses: actions/upload-artifact@v1
       with:
         name: PGM.jar
         path: target/PGM.jar
-    - name: docker
-      run: |
-        mvn -pl server compile jib:build \
-          -Djib.to.auth.username=${{ secrets.DOCKER_USERNAME }} \
-          -Djib.to.auth.password=${{ secrets.DOCKER_PASSWORD }} \
-          -Djib.to.image=${{ secrets.DOCKER_IMAGE }} \
-          -Djib.to.tags=latest,${GITHUB_REF#refs/heads/},$(date +%F)

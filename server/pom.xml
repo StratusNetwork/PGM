@@ -8,7 +8,7 @@
 
     <parent>
         <relativePath>../pom.xml</relativePath>
-        <version>0.10-SNAPSHOT</version>
+        <version>0.10-Stratus-SNAPSHOT</version>
         <groupId>tc.oc.pgm</groupId>
         <artifactId>PGM</artifactId>
     </parent>
@@ -22,7 +22,7 @@
         <dependency>
             <groupId>tc.oc.pgm</groupId>
             <artifactId>core</artifactId>
-            <version>0.10-SNAPSHOT</version>
+            <version>0.10-Stratus-SNAPSHOT</version>
         </dependency>
 
         <!-- Older version of log4j logging library that barely works -->
@@ -147,6 +147,16 @@
                     </container>
                 </configuration>
             </plugin>
+            
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>3.0.0-M1</version>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
+    
 </project>
