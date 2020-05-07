@@ -49,7 +49,7 @@ public class MatchTabManager extends TabManager implements Listener {
 
   private Future<?> pingUpdateTask;
   private Future<?> renderTask;
-  private PlayerOrderFactory playerOrderFactory;
+  private PlayerOrderFactory playerOrderFactory = new DefaultPlayerOrderFactory();
 
   public MatchTabManager(Plugin plugin) {
     this(
@@ -157,6 +157,9 @@ public class MatchTabManager extends TabManager implements Listener {
     if (view != null) {
       plugin.getServer().getPluginManager().registerEvents(view, PGM.get());
     }
+    if (view instanceof MatchTabView) {
+      ((MatchTabView) view).setPlayerOrderFactory(playerOrderFactory);
+    }
     return view;
   }
 
@@ -184,7 +187,7 @@ public class MatchTabManager extends TabManager implements Listener {
     return this.footerEntries.get(match);
   }
   
-  protected PlayerOrderFactory getPlayerOrderFactory() {
+  public PlayerOrderFactory getPlayerOrderFactory() {
 	return playerOrderFactory;
   }
 
