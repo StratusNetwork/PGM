@@ -191,7 +191,7 @@ public final class PGMConfig implements Config {
     this.rightTablistText =
         rightText == null || rightText.isEmpty() ? null : parseComponent(rightText);
 
-    this.communityMode = parseBoolean(config.getString("community.enabled", "true"));
+    this.communityMode = parseBoolean(config.getString("community.enabled", "false"));
 
     final ConfigurationSection section = config.getConfigurationSection("groups");
     this.groups = new ArrayList<>();
