@@ -60,6 +60,8 @@ import tc.oc.pgm.kits.KitModule;
 import tc.oc.pgm.modes.ObjectiveModesMatchModule;
 import tc.oc.pgm.modes.ObjectiveModesModule;
 import tc.oc.pgm.modules.ArrowRemovalMatchModule;
+import tc.oc.pgm.modules.DisableWaterSourcesMatchModule;
+import tc.oc.pgm.modules.DisableWaterSourcesModule;
 import tc.oc.pgm.modules.DiscardPotionBottlesMatchModule;
 import tc.oc.pgm.modules.DiscardPotionBottlesModule;
 import tc.oc.pgm.modules.EventFilterMatchModule;
@@ -242,6 +244,10 @@ public interface Modules {
         DiscardPotionBottlesModule.class,
         DiscardPotionBottlesMatchModule.class,
         new DiscardPotionBottlesModule.Factory());
+    register(
+            DisableWaterSourcesModule.class,
+            DisableWaterSourcesMatchModule.class,
+            new DisableWaterSourcesModule.Factory());
     register(DamageModule.class, DamageMatchModule.class, new DamageModule.Factory());
     register(
         WorldBorderModule.class, WorldBorderMatchModule.class, new WorldBorderModule.Factory());
