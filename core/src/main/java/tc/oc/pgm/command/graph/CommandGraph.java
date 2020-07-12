@@ -44,6 +44,7 @@ import tc.oc.pgm.command.SettingCommand;
 import tc.oc.pgm.command.StartCommand;
 import tc.oc.pgm.command.TeamCommand;
 import tc.oc.pgm.command.TimeLimitCommand;
+import tc.oc.pgm.command.VotingCommand;
 import tc.oc.pgm.teams.TeamMatchModule;
 import tc.oc.pgm.util.chat.Audience;
 
@@ -80,6 +81,7 @@ public class CommandGraph extends BasicBukkitCommandGraph {
     register(new StartCommand());
     register(new TeamCommand(), "team");
     register(new TimeLimitCommand());
+    register(new VotingCommand(), "vote", "votes");
   }
 
   public void register(Object command, String... aliases) {
