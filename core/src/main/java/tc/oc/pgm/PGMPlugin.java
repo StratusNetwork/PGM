@@ -40,6 +40,7 @@ import tc.oc.pgm.api.module.Module;
 import tc.oc.pgm.api.module.exception.ModuleLoadException;
 import tc.oc.pgm.api.player.VanishManager;
 import tc.oc.pgm.api.prefix.PrefixRegistry;
+import tc.oc.pgm.command.StatsCommand;
 import tc.oc.pgm.command.graph.CommandExecutor;
 import tc.oc.pgm.command.graph.CommandGraph;
 import tc.oc.pgm.community.command.CommunityCommandGraph;
@@ -304,6 +305,9 @@ public class PGMPlugin extends JavaPlugin implements PGM, Listener {
 
     graph.register(vanishManager);
     graph.register(ChatDispatcher.get());
+
+    if (config.isStatsCommandEnabled())
+      graph.register(new StatsCommand());
 
     new CommandExecutor(this, graph).register();
   }

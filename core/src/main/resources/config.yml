@@ -144,7 +144,7 @@ groups:
 
 # Enables "community mode" with features such as /report, /freeze, /warn, and /ban.
 community:
-  enabled: true   # Is community mode enabled?
+  enabled: false  # Is community mode enabled?
   server-name: "" # Name of your server, displayed when players are kicked.
   rules-link: ""  # A URL to a rules website, displayed when players are kicked.
   appeal-msg: ""  # A message, displayed on the kick screen, if a player is banned.
@@ -160,3 +160,6 @@ database-uri: ""
 
 # Experimental features that are not yet stable.
 experiments: {}
+
+# Whether to enable the PGM /stats command
+enable-stats-command: false

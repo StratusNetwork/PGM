@@ -264,4 +264,12 @@ public interface Config {
    * @return A map of experimental settings.
    */
   Map<String, Object> getExperiments();
+
+  /**
+   * Whether the local /stats command should be registered.
+   *
+   * @return Whether /stats is enabled
+   */
+  boolean isStatsCommandEnabled();
+
 }

@@ -96,6 +96,8 @@ public final class PGMConfig implements Config {
   // experiments.*
   private final Map<String, Object> experiments;
 
+  private final boolean statsCommand;
+
   PGMConfig(FileConfiguration config, File dataFolder) throws TextException {
     handleLegacyConfig(config, dataFolder);
 
@@ -209,6 +211,8 @@ public final class PGMConfig implements Config {
 
     final ConfigurationSection experiments = config.getConfigurationSection("experiments");
     this.experiments = experiments == null ? ImmutableMap.of() : experiments.getValues(false);
+
+    this.statsCommand = parseBoolean(config.getString("enable-stats-command", "false"));
   }
 
   // TODO: Can be removed after 1.0 release
@@ -535,6 +539,11 @@ public final class PGMConfig implements Config {
   @Override
   public Map<String, Object> getExperiments() {
     return experiments;
+  }
+
+  @Override
+  public boolean isStatsCommandEnabled() {
+    return statsCommand;
   }
 
   private static class Group implements Config.Group {
