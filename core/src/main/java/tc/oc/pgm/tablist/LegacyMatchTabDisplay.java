@@ -41,6 +41,8 @@ import tc.oc.pgm.util.tablist.TabDisplay;
 import tc.oc.pgm.util.text.TextTranslations;
 import tc.oc.pgm.util.text.types.PlayerComponent;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 /** 1.7 legacy tablist implementation */
 public class LegacyMatchTabDisplay implements Listener {
 
@@ -62,11 +64,21 @@ public class LegacyMatchTabDisplay implements Listener {
   // For multi match support, this should be saved per-match
   private boolean compact;
 
+  private PlayerOrderFactory playerOrderFactory = new DefaultPlayerOrderFactory();
+
   public LegacyMatchTabDisplay(PGM pgm) {
     this.tabDisplay = new TabDisplay(pgm, WIDTH);
 
     this.timeUpdateTask =
         pgm.getExecutor().scheduleWithFixedDelay(this::renderTime, 0, 1, TimeUnit.SECONDS);
+  }
+
+  public PlayerOrderFactory getPlayerOrderFactory() {
+    return playerOrderFactory;
+  }
+
+  public void setPlayerOrderFactory(PlayerOrderFactory factory) {
+    this.playerOrderFactory = checkNotNull(factory);
   }
 
   public void disable() {
@@ -271,7 +283,7 @@ public class LegacyMatchTabDisplay implements Listener {
       teams.add(match.getDefaultParty());
     }
 
-    TreeSet<MatchPlayer> players = new TreeSet<>(new PlayerOrder(viewer));
+    TreeSet<MatchPlayer> players = new TreeSet<>(playerOrderFactory.getOrder(viewer));
 
     if (this.compact || isFFA(viewer.getMatch())) {
       // Render a single list that spans all columns

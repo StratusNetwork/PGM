@@ -12,6 +12,7 @@ import tc.oc.pgm.api.map.MapOrder;
 import tc.oc.pgm.api.match.MatchManager;
 import tc.oc.pgm.api.player.VanishManager;
 import tc.oc.pgm.api.prefix.PrefixRegistry;
+import tc.oc.pgm.tablist.LegacyMatchTabDisplay;
 import tc.oc.pgm.tablist.MatchTabManager;
 
 /** PvP Game Manager (aka. PGM), the global {@link Plugin} to manage PvP games. */
@@ -27,6 +28,9 @@ public interface PGM extends Plugin {
 
   @Nullable
   MatchTabManager getMatchTabManager();
+
+  @Nullable
+  LegacyMatchTabDisplay getLegacyMatchTabManager();
 
   MapLibrary getMapLibrary();
 

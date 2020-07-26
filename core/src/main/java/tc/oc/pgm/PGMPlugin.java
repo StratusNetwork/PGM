@@ -284,6 +284,11 @@ public class PGMPlugin extends JavaPlugin implements PGM, Listener {
   }
 
   @Override
+  public LegacyMatchTabDisplay getLegacyMatchTabManager() {
+    return legacyMatchTabManager;
+  }
+
+  @Override
   public PrefixRegistry getPrefixRegistry() {
     return prefixRegistry;
   }
