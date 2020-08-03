@@ -79,6 +79,7 @@ public final class PGMConfig implements Config {
   // ui.*
   private final boolean showSideBar;
   private final boolean showTabList;
+  private final boolean showTabListPing;
   private final boolean showProximity;
   private final boolean showFireworks;
   private final boolean participantsSeeObservers;
@@ -165,6 +166,7 @@ public final class PGMConfig implements Config {
     this.showProximity = parseBoolean(config.getString("ui.proximity", "false"));
     this.showSideBar = parseBoolean(config.getString("ui.sidebar", "true"));
     this.showTabList = parseBoolean(config.getString("ui.tablist", "true"));
+    this.showTabListPing = parseBoolean(config.getString("ui.ping", "true"));
     this.participantsSeeObservers =
         parseBoolean(config.getString("ui.participants-see-observers", "true"));
     this.showFireworks = parseBoolean(config.getString("ui.fireworks", "true"));
@@ -518,6 +520,11 @@ public final class PGMConfig implements Config {
   }
 
   @Override
+  public boolean showTabListPing() {
+    return showTabListPing;
+  }
+
+  @Override
   public boolean canParticipantsSeeObservers() {
     return participantsSeeObservers;
   }
@@ -560,6 +567,7 @@ public final class PGMConfig implements Config {
   private static class Group implements Config.Group {
     private final String id;
     private final String prefix;
+    private final String suffix;
     private final Permission permission;
     private final Permission observerPermission;
     private final Permission participantPermission;
@@ -568,6 +576,8 @@ public final class PGMConfig implements Config {
       this.id = config.getName();
       final String prefix = config.getString("prefix");
       this.prefix = prefix == null ? null : parseComponentLegacy(prefix);
+      final String suffix = config.getString("suffix");
+      this.suffix = suffix == null ? null : parseComponentLegacy(suffix);
       final PermissionDefault def =
           id.equalsIgnoreCase("op")
               ? PermissionDefault.OP
@@ -625,6 +635,11 @@ public final class PGMConfig implements Config {
     @Override
     public String getPrefix() {
       return prefix;
+    }
+
+    @Override
+    public String getSuffix() {
+      return suffix;
     }
   }
 

@@ -85,12 +85,17 @@ public interface NMSHacks {
   static PacketPlayOutPlayerInfo.PlayerInfoData playerListPacketData(
       PacketPlayOutPlayerInfo packet, UUID uuid, BaseComponent... displayName) {
     return playerListPacketData(
-        packet, uuid, uuid.toString().substring(0, 16), null, 0, null, displayName);
+        packet, uuid, "|" + uuid.toString().substring(0, 15), null, 0, null, displayName);
   }
 
   static PacketPlayOutPlayerInfo.PlayerInfoData playerListPacketData(
       PacketPlayOutPlayerInfo packet, UUID uuid) {
     return playerListPacketData(packet, uuid, null, null, 0, null);
+  }
+
+  static PacketPlayOutPlayerInfo.PlayerInfoData playerListPacketData(
+      PacketPlayOutPlayerInfo packet, UUID uuid, int ping) {
+    return playerListPacketData(packet, uuid, uuid.toString().substring(0, 16), null, ping, null);
   }
 
   static Packet teamPacket(
@@ -507,6 +512,10 @@ public interface NMSHacks {
 
   static Packet entityEquipmentPacket(int entityId, int slot, org.bukkit.inventory.ItemStack armor) {
     return new PacketPlayOutEntityEquipment(entityId, slot, CraftItemStack.asNMSCopy(armor));
+  }
+
+  static int getPing(Player player) {
+    return ((CraftPlayer) player).getHandle().ping;
   }
 
   interface FakeEntity {
