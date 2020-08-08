@@ -23,7 +23,7 @@
 
     <groupId>tc.oc.pgm</groupId>
     <artifactId>PGM</artifactId>
-    <version>0.9-Stratus-SNAPSHOT</version>
+    <version>0.9-Stratus-TM-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <modules>
