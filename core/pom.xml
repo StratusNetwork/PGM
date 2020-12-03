@@ -22,7 +22,6 @@
         <dependency>
             <groupId>tc.oc.pgm</groupId>
             <artifactId>util</artifactId>
-            <version>0.10-SNAPSHOT</version>
             <version>0.10-Stratus-SNAPSHOT</version>
         </dependency>
     </dependencies>

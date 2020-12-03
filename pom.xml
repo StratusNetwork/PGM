@@ -12,17 +12,7 @@
     <description>The original PvP Game Manager for Minecraft.</description>
     <inceptionYear>2011</inceptionYear>
 
-<<<<<<< HEAD
-    <url>https://pgm.dev</url>
-    <issueManagement>
-        <url>https://github.com/PGMDev/PGM/issues</url>
-    </issueManagement>
-    <scm>
-        <connection>scm:git:git://github.com/PGMDev/PGM</connection>
-    </scm>
-=======
     <url>https://github.com/StratusNetwork/PGM</url>
->>>>>>> 7a27749... Stratus deployment
 
     <developers>
         <developer>
@@ -33,11 +23,7 @@
 
     <groupId>tc.oc.pgm</groupId>
     <artifactId>PGM</artifactId>
-<<<<<<< HEAD
-    <version>0.10-SNAPSHOT</version>
-=======
-    <version>0.8-Stratus-SNAPSHOT</version>
->>>>>>> 7a27749... Stratus deployment
+    <version>0.10-Stratus-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <modules>
@@ -68,16 +54,10 @@
 
     <distributionManagement>
         <repository>
-<<<<<<< HEAD
-            <id>ashcon.app</id>
-            <url>https://repo.ashcon.app/content/repositories/snapshots</url>
-        </repository>
-=======
             <id>stratus-plugins</id>
             <name>Stratus Plugins</name>
             <url>${env.MAVEN_REPO_URL}</url>
           </repository>
->>>>>>> 7a27749... Stratus deployment
     </distributionManagement>
 
     <dependencies>
@@ -203,7 +183,6 @@
                 </configuration>
             </plugin>
 
-<<<<<<< HEAD
             <!-- Validates that code is properly formatted with Google's code style -->
             <plugin>
                 <groupId>com.coveo</groupId>
@@ -222,9 +201,6 @@
             </plugin>
 
             <!-- Allows for building of java docs, although not used yet -->
-=======
-            <!-- Prevent .zip resources from getting filtered and corrupted -->
->>>>>>> 7a27749... Stratus deployment
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
