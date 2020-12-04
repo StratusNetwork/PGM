@@ -453,4 +453,10 @@ public abstract class FilterParser {
   public ScoreFilter parseScoreFilter(Element el) throws InvalidXMLException {
     return new ScoreFilter(XMLUtils.parseNumericRange(new Node(el), Integer.class));
   }
+
+  @MethodParser("existed-pre-match")
+  public ExistedPreMatchFilter exitedPreMatch(Element el) throws InvalidXMLException {
+    return new ExistedPreMatchFilter();
+  }
+
 }
